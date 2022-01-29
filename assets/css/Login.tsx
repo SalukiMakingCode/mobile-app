@@ -7,10 +7,8 @@ const styles  = StyleSheet.create({
             alignItems: 'center',
             justifyContent: 'space-around'
         },
-        logo: {
-            width:250,
-            height:154,
-            marginTop:30
+        header:{
+            height:155
         },
         input: {
             width: 220,

@@ -1,35 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import {Image, Pressable, Text, TextInput, View} from 'react-native';
-import React from "react";
-import styles from "./assets/css/style";
+import * as React from "react";
+import { NativeRouter, Routes, Route } from "react-router-native";
+import Login from "./components/Login";
+import Home from "./components/Home";
 
-export default function App() {
-    const [login, setLogin] = React.useState<string>("");
-    const [password, setPassword] = React.useState<string>("");
+function App() {
+    const initialEntries = ['/', '/'];
     return (
-    <View style={styles.container}>
-      <Image
-          source={require('./assets/img/logo.png')}
-          style={styles.logo}
-      />
-      <View>
-        <Text style={styles.label}>Login</Text>
-        <TextInput
-          style={styles.input} onChangeText={setLogin} value={login}/>
-      </View>
-      <View>
-        <Text style={styles.label}>Mot de passe</Text>
-        <TextInput
-            style={styles.input} onChangeText={setPassword} value={password}/>
-          <Pressable style={styles.forgotPasswordButton} onPress={() => alert('mot de passe oublié')} >
-              <Text style={styles.forgotPasswordButtonText}>Mot de passe oublié</Text>
-          </Pressable>
-      </View>
-
-      <Pressable style={styles.loginButton} onPress={() => alert('log me')}>
-          <Text style={styles.loginButtonText}>Entrer</Text>
-      </Pressable>
-      <StatusBar style="auto" />
-    </View>
-  );
+        <NativeRouter initialEntries={initialEntries}>
+            <Routes>
+                <Route path="/" element={<Login/>} />
+                <Route path="/home" element={<Home/>} />
+            </Routes>
+        </NativeRouter>
+    );
 }
+
+export default App;
